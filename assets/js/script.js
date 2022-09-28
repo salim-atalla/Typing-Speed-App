@@ -80,6 +80,8 @@ startButton.onclick = function () {
   // Handle The Game
   handleGame();
 };
+// Handle Enter button for start button
+document.addEventListener();
 
 // Functions
 function handleGame() {
@@ -90,8 +92,6 @@ function handleGame() {
       if (gameOver()) {
         clearInterval(start);
         gameSection.style.display = "none";
-      } else {
-        nextWord();
       }
     }
   }, 1000);
@@ -115,18 +115,24 @@ function generateWord() {
 
 function gameOver() {
   // Winning Case
-  if (currentWordNumber.textContent === TotalWordsNumber.textContent) {
+  if (
+    currentWordNumber.textContent === TotalWordsNumber.textContent &&
+    wordInput.value.toLowerCase() === currentWord.textContent.toLowerCase()
+  ) {
+    finishMessage.style.display = "block";
     finishMessage.innerHTML = "You Win!";
     finishMessage.classList.add("good");
     return true;
   }
   // Losing Case
   if (wordInput.value.toLowerCase() !== currentWord.textContent.toLowerCase()) {
+    finishMessage.style.display = "block";
     finishMessage.innerHTML = "You Lose";
     finishMessage.classList.add("bad");
     return true;
   }
   // Playing Case
+  nextWord();
   return false;
 }
 

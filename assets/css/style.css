@@ -147,14 +147,25 @@ body {
   color: var(--secondry-color);
 }
 .finish {
-  font-size: 35px;
+  display: none;
+  font-size: 50px;
   text-align: center;
-  margin: 20px 0;
+  margin: 20px;
+  padding: 20px 50px;
+  transform: rotate(-20deg) translate(-50%, -50%);
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: fit-content;
   font-weight: bold;
+  border-width: 5px;
+  border-style: solid;
 }
 .finish.good {
-  color: var(--main-color);
+  border-color: var(--secondry-color);
+  color: var(--secondry-color);
 }
 .finish.bad {
+  border-color: red;
   color: red;
 }
