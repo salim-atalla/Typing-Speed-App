@@ -64,6 +64,9 @@ body {
   max-width: 700px;
   margin: 0 auto;
 }
+.game-section {
+  display: none;
+}
 .game-info {
   text-align: center;
   background-color: white;
@@ -113,6 +116,7 @@ body {
   caret-color: var(--main-color);
   color: #333;
   margin: 10px 0;
+  text-transform: capitalize;
 }
 .word-input:focus {
   outline: none;
