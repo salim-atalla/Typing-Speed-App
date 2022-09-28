@@ -42,6 +42,8 @@ const levels = {
 const defaultLevel = "Normal";
 const defaultTime = levels[defaultLevel];
 
+let score = 0;
+
 // Selectors
 let startButton = document.querySelector(".start-btn");
 let levelName = document.querySelector(".game-info .level-number");
@@ -65,7 +67,6 @@ let gameStarted = false;
 startButton.addEventListener("click", () => {
   gameStarted = true;
   startButton.parentElement.remove();
-  wordInput.focus();
 
   // Setting of the game
   levelName.innerHTML = defaultLevel;
@@ -82,11 +83,11 @@ startButton.addEventListener("click", () => {
 
   // Handle The Game
   handleGame();
+  wordInput.focus();
 });
 
 // Handle start button on keyboard (on press Enter or Space)
 document.body.addEventListener("keypress", (event) => {
-  console.log(event.key);
   if ((event.key === "Enter" || event.key === " ") && !gameStarted) {
     event.preventDefault();
     startButton.click();
@@ -129,19 +130,31 @@ function gameOver() {
     currentWordNumber.textContent === TotalWordsNumber.textContent &&
     wordInput.value.toLowerCase() === currentWord.textContent.toLowerCase()
   ) {
+    score++;
     finishMessage.style.display = "block";
-    finishMessage.innerHTML = "You Win!";
     finishMessage.classList.add("good");
+    finishMessage.innerHTML = `
+      <div class="finish-msg">You Win!</div>
+      <div class="finish-score">
+        Your Score Is <div class="score">${score} / ${TotalWordsNumber.textContent}</div>
+      </div>
+    `;
     return true;
   }
   // Losing Case
   if (wordInput.value.toLowerCase() !== currentWord.textContent.toLowerCase()) {
     finishMessage.style.display = "block";
-    finishMessage.innerHTML = "You Lose";
     finishMessage.classList.add("bad");
+    finishMessage.innerHTML = `
+    <div class="finish-msg">You Lose</div>
+    <div class="finish-score">
+      Your Score Is <div class="score">${score} / ${TotalWordsNumber.textContent}</div>
+    </div>
+  `;
     return true;
   }
   // Playing Case
+  score++;
   nextWord();
   return false;
 }

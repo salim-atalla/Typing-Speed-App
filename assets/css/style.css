@@ -147,25 +147,44 @@ body {
   color: var(--secondry-color);
 }
 .finish {
-  display: none;
+  position: relative;
+  width: 50%;
+  height: 300px;
+  margin: 0 auto;
+  text-align: center;
+}
+.finish .finish-msg {
+  /* display: none; */
   font-size: 50px;
   text-align: center;
   margin: 20px;
   padding: 20px 50px;
   transform: rotate(-20deg) translate(-50%, -50%);
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 50%;
-  width: fit-content;
+  width: 100%;
   font-weight: bold;
   border-width: 5px;
   border-style: solid;
 }
-.finish.good {
+.finish.good .finish-msg,
+.finish.good .finish-score .score {
   border-color: var(--secondry-color);
   color: var(--secondry-color);
 }
-.finish.bad {
+.finish.bad .finish-msg,
+.finish.bad .finish-score .score {
   border-color: red;
   color: red;
+}
+.finish .finish-score {
+  width: 100%;
+  position: absolute;
+  top: 120%;
+  left: 57%;
+  transform: translate(-50%, -50%);
+  font-size: 30px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 2px;
 }
