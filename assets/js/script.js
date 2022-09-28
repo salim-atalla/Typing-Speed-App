@@ -60,7 +60,10 @@ let gameSection = document.querySelector(".game-section");
 let finishMessage = document.querySelector(".finish");
 
 // Events Handlers
-startButton.onclick = function () {
+let gameStarted = false;
+
+startButton.addEventListener("click", () => {
+  gameStarted = true;
   startButton.parentElement.remove();
   wordInput.focus();
 
@@ -79,9 +82,16 @@ startButton.onclick = function () {
 
   // Handle The Game
   handleGame();
-};
-// Handle Enter button for start button
-document.addEventListener();
+});
+
+// Handle start button on keyboard (on press Enter or Space)
+document.body.addEventListener("keypress", (event) => {
+  console.log(event.key);
+  if ((event.key === "Enter" || event.key === " ") && !gameStarted) {
+    event.preventDefault();
+    startButton.click();
+  }
+});
 
 // Functions
 function handleGame() {
