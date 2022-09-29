@@ -36,6 +36,7 @@ body {
   background-color: rgba(17, 37, 47, 0.75);
 }
 .start-btn {
+  z-index: 10;
   background-color: var(--secondry-color);
   color: white;
   text-align: center;
